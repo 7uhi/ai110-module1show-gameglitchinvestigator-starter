@@ -6,8 +6,8 @@ def get_range_for_difficulty(difficulty: str):
         return 1, 20
     if difficulty == "Normal":
         return 1, 100
-    if difficulty == "Hard":
-        return 1, 50
+    if difficulty == "Hard": #FIX: Changed range so it matches difficulty using Claude
+        return 1, 500
     return 1, 100
 
 
@@ -34,17 +34,17 @@ def check_guess(guess, secret):
         return "Win", "🎉 Correct!"
 
     try:
-        if guess > secret:
-            return "Too High", "📈 Go HIGHER!"
+        if guess > secret: #FIX: Flipped int messages using Claude
+            return "Too High", "📉 Go LOWER!"
         else:
-            return "Too Low", "📉 Go LOWER!"
+            return "Too Low", "📈 Go HIGHER!"
     except TypeError:
         g = str(guess)
         if g == secret:
             return "Win", "🎉 Correct!"
         if g > secret:
-            return "Too High", "📈 Go HIGHER!"
-        return "Too Low", "📉 Go LOWER!"
+            return "Too High", "📉 Go LOWER!"
+        return "Too Low", "📈 Go HIGHER!"
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
