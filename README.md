@@ -25,13 +25,21 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
+- [ ] The game's purpose is to guess a number given a range. You can use hints which will tell you if you should guess higher or lower.
 - [ ] Detail which bugs you found.
+Bug 1 — Hard difficulty range was too easy.
+get_range_for_difficulty("Hard") returned (1, 50) — a smaller range than Normal (1–100), making Hard easier, not harder.
+Bug 2 - Hint direction messages were flipped.
+Problem: When a guess was too high, the message said "Go HIGHER!" and when too low, it said "Go LOWER!" — the opposite of correct.
+Bug 3: Secret number regenerates on every rerun.
+The "New Game" button always uses 1, 100 regardless of difficulty. Also, the session state isn't reset for attempts, status, history, or score when clicking New Game.
 - [ ] Explain what fixes you applied.
+Fix for Bug 1: Changed the Hard range to (1, 500).
+Fix for Bug 2: Swapped the hint messages to match the actual outcome.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [ ] [![alt text](<CleanShot 2026-03-15 at 21.23.29@2x.png>)]
 
 ## 🚀 Stretch Features
 
